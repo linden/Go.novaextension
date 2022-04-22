@@ -1,83 +1,83 @@
 {
-  "identifier": "gwynethllewelyn.Go",
-  "name": "Go",
-  "organization": "Gwyneth Llewelyn",
-  "description": "Go Language Definition for Nova",
-  "version": "0.4.3",
-  "min_runtime": "6.0",
-  "bugs": "https://github.com/GwynethLlewelyn/Go.novaextension/issues",
-  "repository": "https://github.com/GwynethLlewelyn/Go.novaextension",
-  "homepage": "https://gwynethllewelyn.net",
-  "funding": "https://www.paypal.com/paypalme/gwynethllewelyn",
-  "keywords": ["go", "golang"],
-  "license": "MIT",
-  "categories": ["completions", "languages"],
-  "main": "main.js",
-  "activationEvents": ["onLanguage:Go", "onWorkspaceContains:*.go"],
-  "entitlements": {
-    "process": true,
-    "requests": false,
-    "filesystem": "readwrite"
-  },
-  "config": [
-    {
-      "key": "go-nova.enable-gopls",
-      "title": "Enable Language Server",
-      "description": "Use the `gopls` language server for enhanced functionality. The `gopls` command should be installed in your search path, or you can specify the full path below.",
-      "link": "https://github.com/golang/tools/blob/master/gopls/README.md",
-      "type": "boolean",
-      "default": false
+    "identifier": "linden.Go",
+    "name": "Go",
+    "organization": "Linden",
+    "description": "Go Language Definition for Nova",
+    "version": "0.4.3",
+    "min_runtime": "6.0",
+    "bugs": "https://github.com/linden/Go.novaextension/issues",
+    "repository": "https://github.com/linden/Go.novaextension",
+    "homepage": "https://github.com/linden",
+    "funding": "https://www.paypal.com/paypalme/gwynethllewelyn",
+    "keywords": ["go", "golang"],
+    "license": "MIT",
+    "categories": ["completions", "languages"],
+    "main": "main.js",
+    "activationEvents": ["onLanguage:Go", "onWorkspaceContains:*.go"],
+    "entitlements": {
+        "process": true,
+        "requests": false,
+        "filesystem": "readwrite"
     },
-    {
-      "key": "go-nova.gopls-path",
-      "title": "Language Server Command",
-      "link": "https://github.com/golang/tools/blob/master/gopls/README.md",
-      "description": "The command name to start the `gopls` language server. Use an absolute path here if `gopls` is not in your search path ($PATH environment variable).",
-      "type": "path",
-      "default": "gopls",
-      "filetype": ["public.unix-executable"]
-    },
-    {
-      "key": "go-nova.format-on-save",
-      "title": "(Experimental) Format/Organize Imports when saving file (DANGEROUS!)",
-      "description": "When saving, use `gopls` to format file according to Go formatting standards and organize imports (the equivalent of executing `gofmt`, `goimports`, `goreturns`). Requires `gopls` language server to be active.\nWARNING: For experimental purposes ONLY! Currently it WILL DESTROY YOUR FILES!",
-      "type": "boolean",
-      "default": false
-    },
-    {
-      "key": "go-nova.use-staticcheck",
-      "title": "(Experimental) Use https://staticcheck.io for further analysis",
-      "description": "Use `gopls` in conjunction with https://staticcheck.io for further analysis of the code. This also requires `gopls` language server to be active.",
-      "type": "boolean",
-      "default": false
+    "config": [
+        {
+            "key": "go-nova.enable-gopls",
+            "title": "Enable Language Server",
+            "description": "Use the `gopls` language server for enhanced functionality. The `gopls` command should be installed in your search path, or you can specify the full path below.",
+            "link": "https://github.com/golang/tools/blob/master/gopls/README.md",
+            "type": "boolean",
+            "default": false
+        },
+        {
+            "key": "go-nova.gopls-path",
+            "title": "Language Server Command",
+            "link": "https://github.com/golang/tools/blob/master/gopls/README.md",
+            "description": "The command name to start the `gopls` language server. Use an absolute path here if `gopls` is not in your search path ($PATH environment variable).",
+            "type": "path",
+            "default": "gopls",
+            "filetype": ["public.unix-executable"]
+        },
+        {
+            "key": "go-nova.format-on-save",
+            "title": "(Experimental) Format/Organize Imports when saving file (DANGEROUS!)",
+            "description": "When saving, use `gopls` to format file according to Go formatting standards and organize imports (the equivalent of executing `gofmt`, `goimports`, `goreturns`). Requires `gopls` language server to be active.\nWARNING: For experimental purposes ONLY! Currently it WILL DESTROY YOUR FILES!",
+            "type": "boolean",
+            "default": false
+        },
+        {
+            "key": "go-nova.use-staticcheck",
+            "title": "(Experimental) Use https://staticcheck.io for further analysis",
+            "description": "Use `gopls` in conjunction with https://staticcheck.io for further analysis of the code. This also requires `gopls` language server to be active.",
+            "type": "boolean",
+            "default": false
+        }
+    ],
+    "commands": {
+        "editor": [
+            {
+                "title": "Jump to Definition",
+                "command": "go.jumpToDefinition",
+                "when": "editorHasFocus",
+                "filters": {
+                    "syntaxes": ["go"]
+                }
+            },
+            {
+                "title": "Organize Imports",
+                "command": "go.organizeImports",
+                "when": "editorHasFocus",
+                "filters": {
+                    "syntaxes": ["go"]
+                }
+            },
+            {
+                "title": "Format File",
+                "command": "go.formatFile",
+                "when": "editorHasFocus",
+                "filters": {
+                    "syntaxes": ["go"]
+                }
+            }
+        ]
     }
-  ],
-  "commands": {
-    "editor": [
-      {
-        "title": "Jump to Definition",
-        "command": "go.jumpToDefinition",
-        "when": "editorHasFocus",
-        "filters": {
-          "syntaxes": ["go"]
-        }
-      },
-      {
-        "title": "Organize Imports",
-        "command": "go.organizeImports",
-        "when": "editorHasFocus",
-        "filters": {
-          "syntaxes": ["go"]
-        }
-      },
-      {
-        "title": "Format File",
-        "command": "go.formatFile",
-        "when": "editorHasFocus",
-        "filters": {
-          "syntaxes": ["go"]
-        }
-      }
-    ]
-  }
 }
